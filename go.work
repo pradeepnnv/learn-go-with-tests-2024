@@ -1,0 +1,14 @@
+go 1.20
+
+use (
+	./arrays
+	./concurrency
+	./hello-world
+	./integers
+	./iteration
+	./racer
+	./reflection
+	./shapes
+	./synclearngowithtests
+	./wallets
+)
