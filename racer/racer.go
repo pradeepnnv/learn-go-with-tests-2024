@@ -1,23 +1,20 @@
 package racer
 
 import (
-	"fmt"
 	"net/http"
 	"time"
 )
 
 func Racer(s, f string) (w string) {
-	startA := time.Now()
-	http.Get(s)
-	aDuration := time.Since(startA)
 
-	startB := time.Now()
-	http.Get(f)
-	bDuration := time.Since(startB)
-
-	fmt.Println(aDuration, bDuration)
-	if aDuration > bDuration {
+	if measureResponseTime(s) > measureResponseTime(f) {
 		return f
 	}
 	return s
+}
+
+func measureResponseTime(url string) time.Duration {
+	start := time.Now()
+	http.Get(url)
+	return time.Since(start)
 }
